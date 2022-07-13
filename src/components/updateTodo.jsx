@@ -1,31 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { Form, Button, Card, Dropdown, Input} from "semantic-ui-react";
+import { Form, Button, Card, Dropdown, Input, Checkbox} from "semantic-ui-react";
 
 export function UpdateTodo({ _id, handleClose, handleUpdate }) {
-    const [data, setData] = useState({ title: "", description: "" , priority: "", completed: false });
+    
+    // useState to be used to update data object values
+    const [data, setData] = useState({ title: "", description: "" , priority: "", completed:false});
+    //this value will be used to set the value of completed and for toggling the checkbox field
+    const [checked,setChecked] = useState(false)
 
-    function handleChange(e) {
-        setData((data) => ({ ...data, [e.target.name]: e.target.value }));
+
+    //method to toggle between true or false
+    const handleChecked=()=>{
+        setChecked(current=>!current)
     }
 
+
+    //this method sets updated data
+    function handleChange(e) {
+        setData((data) => ({ ...data, [e.target.name]: e.target.value }));
+   
+  
+    }
     function handleSubmit(e) {
         e.preventDefault();
 
         console.log({ _id }, { data });
-
+// put operation also known as the update operation 
+// update todo according to it's ID
         axios
             .put(`http://localhost:8000/api/todo/${_id}`, data)
             .then((res) => {
-                setData({ title: "", description: "", priority: "", completed: false});
+                setData({ title: data.title, description: data.description, priority:data.priority, completed:data.completed});
                 console.log(res.data.message);
             })
             .catch((err) => {
                 console.log("Failed to update todo");
                 console.log(err.message);
             });
+            console.log('data.completed',data.completed)
     }
-
     return (
         <Card centered>
             <Form
@@ -60,7 +74,9 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
                 focus
             />
             </Form.Field>
+           
             <Form.Field>
+            <input type='checkbox'value={!checked} label='Complete Task' name="completed" onChange={handleChange} onClick={handleChecked} checked={checked}/>
             <Button type="submit" className="button" primary>
                 Submit
             </Button>
@@ -71,3 +87,4 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
         
     );
 }
+

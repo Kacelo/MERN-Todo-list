@@ -3,13 +3,18 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 
-
+// connection to database imported
 const connectDB = require("./config/db"); //added
 
+// creating an instance of an express application server
 const app = express();
+
+
 //import routes
 const todo = require("./routes/todo");
-connectDB();//added
+
+// calling function to connect to the DB
+connectDB();
 
 
 app.use(cors({ origin: true, credentials: true }));
@@ -26,6 +31,7 @@ app.use("/api/todo", todo);
 // setting up port
 const PORT = process.env.PORT || 8000;
 
+// app.listen: server connection on local host
 app.listen(PORT, () => {
     console.log(`server is running on http://localhost:${PORT}`);
 });

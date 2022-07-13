@@ -1,12 +1,19 @@
+// importing essential hooks, components 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FORM_CONSTANTS } from "../configs/constants";
 import axios from "axios";
 import { Form, Button, Card, Dropdown, Input} from "semantic-ui-react";
-import { Formik } from "formik";
+
+
+//create to do function main entry
 export function CreateTodo() {
+
+    // useState funtion to update the state of the data
+    // intially set to default empty strings. 
     const [data, setData] = useState({ title: "", description: "", priority: "", completed:false });
 
+    //function to set the new state of the data from empty strings to real values from user
     function handleChange(e) {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
     }
@@ -15,17 +22,12 @@ export function CreateTodo() {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
 
     }
-    useEffect(() => {
-      
     
-      return () => {
-        
-      }
-    }, [data])
-    
+    // Handle submit function to capture the new data and send it through to the api
     function handleSubmit(e) {
         e.preventDefault();
-        // setTimeout(function(){window.location.reload();},3)
+      
+        // 
         axios
             .post("http://localhost:8000/api/todo", data)
             .then((res) => {
@@ -40,14 +42,10 @@ export function CreateTodo() {
 
     return (
         <section className="container">
-            {/* <Link to="/">
-                <button type="button" className="button button-back">
+            /
+              {/* <Button type="button" className="button button-back">
                     back
-                </button>
-            </Link> */}
-            <Formik
-            render={({})=>{
-                return(
+                </Button> */}
                     <><Card centered={true} className="contents">
                     <Form
                         onSubmit={handleSubmit}
@@ -93,13 +91,13 @@ export function CreateTodo() {
                                 </Dropdown>
                             </Form.Field>
                   
-                        <Button color="instagram" type="submit" className="button">
-                            create todo
+                        <Button type="submit" className="button primary">
+                            Add New
                         </Button>
                     </Form>
+                    <br/>
                 </Card></>
-                )
-            }}/>
+       
             
         </section>
     );

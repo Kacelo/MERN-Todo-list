@@ -1,7 +1,10 @@
+// importing mongoose module
 const mongoose = require("mongoose");
 
+// constant containing the database connection string in ouur ENV file.
 const db = process.env.MONGO_URI;
 
+// function to connect to the database
 const connectDB = async () => {
     try {
         await mongoose.connect(db, {
