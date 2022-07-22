@@ -1,21 +1,25 @@
 import "./App.scss";
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ShowTodoList } from "./components/showTodoList";
 import { CreateTodo } from "./components/createTodo";
+import CreateButton from "./components/navigation/create_new_btn"
 import "./components/styles.scss";
 function App() {
   return (
+    <Router>
     <div className="App">
-      hello summer
-{/* 
+      
+        <CreateButton/>
         <Routes>
-          <Route exact path="/" element={<ShowTodoList/>} />
-          <Route path="/create-todo" exact component={<CreateTodo/>}/>
-        </Routes> */}
-      <CreateTodo />
-      <ShowTodoList />
-    </div>
+          <Route exact path="/showTodoList" element={<ShowTodoList/>} />
+          <Route path="/createTodo" element={<CreateTodo/>} />
+        </Routes>
+        </div>
+        {/* <CreateTodo/> */}
+      </Router>
+      
+    
   );
 }
 
