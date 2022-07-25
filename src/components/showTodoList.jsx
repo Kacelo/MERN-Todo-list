@@ -150,9 +150,9 @@ console.log(todo)
   return (
     <Card centered>
       <section className="container">
-        <NavLink to="/create-todo" activeClassName="selected" className="button-new">
+        {/* <NavLink to="/create-todo" activeClassName="selected" className="button-new">
                 <button className="button">New</button>
-       </NavLink>
+       </NavLink> */}
 
         <Button className="button">New</Button>
 
