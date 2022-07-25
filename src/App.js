@@ -9,7 +9,7 @@ function App() {
   console.log(getCurrentdate());
   return (
     <div className="App">
-      hello summer
+     
       {/* 
         <Routes>
           <Route exact path="/" element={<ShowTodoList/>} />
