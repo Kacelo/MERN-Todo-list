@@ -29,7 +29,7 @@ app.use("/api/todo", todo);
 
 
 // setting up port
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 
 // app.listen: server connection on local host
 app.listen(PORT, () => {
