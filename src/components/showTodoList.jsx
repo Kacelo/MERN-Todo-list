@@ -36,7 +36,7 @@ function TodoCard({ data, handleEdit, handleDelete }) {
     <div>
       <>
         <h1>{status}</h1>
-        <List.Item key={_id} className={"title-description"}>
+        <List.Item key={_id} className={"created-tasks"}>
           <div>
             <h3>{title}</h3>
             <p>{description}</p>
@@ -61,6 +61,7 @@ function TodoCard({ data, handleEdit, handleDelete }) {
             >
               <Icon name="trash" />
             </Button>
+            <hr/>
           </div>
         </List.Item>
       </>
@@ -117,19 +118,19 @@ export function ShowTodoList(data) {
     });
   }
 
-  function toggleComplete(e) {
-    todo.map((todos) => {
-      if (todos._id === todos._id) {
-        const updatedTodos = [];
-      }
-    });
+  // function toggleComplete(e) {
+  //   todo.map((todos) => {
+  //     if (todos._id === todos._id) {
+  //       const updatedTodos = [];
+  //     }
+  //   });
 
-    axios.put(`http://localhost:8000/api/todo/${e.target.name}`);
+  //   axios.put(`http://localhost:8000/api/todo/${e.target.name}`);
 
-    try {
-      setTodo({ complete: true });
-    } catch (error) {}
-  }
+  //   try {
+  //     setTodo({ complete: true });
+  //   } catch (error) {}
+  // }
 
   console.log(todo);
 
@@ -152,7 +153,8 @@ export function ShowTodoList(data) {
       <Card centered>
         <section className="container">
           <section className="contents">
-            <h1>TODO LIST</h1>
+            <div className="title"><h1>TODO LIST</h1></div>
+            
             <List className="list-container">
               {todo.map((data) => (
                 <>
