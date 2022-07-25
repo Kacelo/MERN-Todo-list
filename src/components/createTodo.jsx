@@ -1,6 +1,5 @@
 // importing essential hooks, components 
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { FORM_CONSTANTS } from "../configs/constants";
 import axios from "axios";
 import { Form, Button, Card, Dropdown, Input} from "semantic-ui-react";
@@ -18,11 +17,6 @@ export function CreateTodo() {
         setData((data) => ({ ...data, [e.target.name]: e.target.value }));
     }
 
-    function dropdownChange(e){
-        setData((data) => ({ ...data, [e.target.name]: e.target.value }));
-
-    }
-    
     // Handle submit function to capture the new data and send it through to the api
     function handleSubmit(e) {
         e.preventDefault();
@@ -42,16 +36,12 @@ export function CreateTodo() {
 
     return (
         <section className="container">
-
-              {/* <Button type="button" className="button button-back">
-                    back
-                </Button> */}
                     <><Card centered={true} className="contents">
                     <Form
                         onSubmit={handleSubmit}
                         className="form-container"
                         noValidate
-                        size="mini"
+                        size="large"
                         widths="equal"
                              >
                         <Form.Field>
@@ -80,7 +70,7 @@ export function CreateTodo() {
                             focus
                         />
                        </Form.Field>
-                            <Form.Field>
+                            {/* <Form.Field>
     
                                 <Dropdown placeholder="select priority"
                                 selection
@@ -89,7 +79,7 @@ export function CreateTodo() {
                                 onChange={handleChange}>
     
                                 </Dropdown>
-                            </Form.Field>
+                            </Form.Field> */}
                   
                         <Button type="submit" className="button primary">
                             Add New
