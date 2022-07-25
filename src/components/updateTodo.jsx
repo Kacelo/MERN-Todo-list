@@ -86,6 +86,9 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
         </Form.Field>
 
         <Form.Field>
+        <label htmlFor="description" className="label">
+            Mark as complete
+          </label>
           <input
             type="checkbox"
             value={!checked}

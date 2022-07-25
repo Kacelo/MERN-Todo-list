@@ -35,35 +35,38 @@ function TodoCard({ data, handleEdit, handleDelete }) {
   return (
     <div>
       <>
-        <h1>{status}</h1>
-        <List.Item key={_id} className={"created-tasks"}>
-          <div>
-            <h3>{title}</h3>
-            <p>{description}</p>
-            <p>{priority}</p>
-            <p>{completed}</p>
-          </div>
+      
+        <List>
+          <List.Item key={_id} className={"created-tasks"}>
+            <List.Content>
+            <List.Header>{status}</List.Header>
+              <List.Header>{title}</List.Header>
+              <List.Description>{description}</List.Description>
+              <p>{priority}</p>
+              <p>{completed}</p>
+            </List.Content>
 
-          <div className="button-container">
-            <Button
-              color="green"
-              className="button"
-              name={_id}
-              onClick={handleEdit}
-            >
-              <Icon name="edit" />
-            </Button>
-            <Button
-              color="red"
-              className="button"
-              name={_id}
-              onClick={handleDelete}
-            >
-              <Icon name="trash" />
-            </Button>
-            <hr/>
-          </div>
-        </List.Item>
+            <List.Content className="button-container">
+              <Button
+                color="green"
+                className="button"
+                name={_id}
+                onClick={handleEdit}
+              >
+                <Icon name="edit" />
+              </Button>
+              <Button
+                color="red"
+                className="button"
+                name={_id}
+                onClick={handleDelete}
+              >
+                <Icon name="trash" />
+              </Button>
+              <hr />
+            </List.Content>
+          </List.Item>
+        </List>
       </>
     </div>
   );
@@ -150,11 +153,13 @@ export function ShowTodoList(data) {
           
           </Link>
         </Router> */}
-      <Card centered>
+      <Card centered className="cards">
         <section className="container">
           <section className="contents">
-            <div className="title"><h1>TODO LIST</h1></div>
-            
+            <div className="title">
+              <h1>TODO LIST</h1>
+            </div>
+
             <List className="list-container">
               {todo.map((data) => (
                 <>

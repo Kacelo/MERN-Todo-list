@@ -8,18 +8,19 @@ import "./components/styles.scss";
 import { getCurrentdate } from "./helpers/current-day";
 import { greetUser } from "./helpers/greeting";
 import Home from "./components/home";
+import TodoHome from "./components/todo-home";
 function App() {
   console.log(greetUser());
   return (
     <Router>
       <div className="App">
-        <Home />
-
-        <CreateButton />
+        {/* <CreateButton /> */}
 
         <Routes>
-          <Route exact path="/showTodoList" element={<ShowTodoList />} />
+          <Route exact path="/" element={<Home />} />
+          <Route  path="/showTodoList" element={<ShowTodoList />} />
           <Route path="/createTodo" element={<CreateTodo />} />
+          <Route path="/todo-home"  element={<TodoHome/>}/>
         </Routes>
       </div>
       {/* <CreateTodo/> */}
