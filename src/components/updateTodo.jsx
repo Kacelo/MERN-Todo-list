@@ -1,12 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import {
   Form,
   Button,
   Card,
-  Dropdown,
   Input,
-  Checkbox,
 } from "semantic-ui-react";
 
 export function UpdateTodo({ _id, handleClose, handleUpdate }) {
@@ -39,7 +37,7 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
     //make sure id is correct
 
     axios
-      .put(`http://localhost:8000/api/todo/${_id}`, data)
+      .put(`http://localhost:8001/api/todo/${_id}`, data)
       .then((res) => {
         setData({ title: "", description: "", priority: "", completed: false });
         console.log(res.data.message);
@@ -51,7 +49,7 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
   }
   console.log("returned ID: ", _id);
   return (
-    <Card centered>
+    <Card centered className="cards update-card">
       <Form
         className="form-container"
         onSubmit={(e) => {
@@ -61,25 +59,25 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
         }}
       >
         <Form.Field>
-          <label htmlFor="title" className="label">
+          <label htmlFor="title" className="todo-label">
             Title
           </label>
           <Input
             type="text"
             name="title"
-            className="input"
+            className="todo-input"
             onChange={handleChange}
             focus
           />
         </Form.Field>
         <Form.Field>
-          <label htmlFor="description" className="label">
+          <label htmlFor="description" className="todo-label">
             Description
           </label>
           <Input
             type="text"
             name="description"
-            className="input"
+            className="todo-input"
             onChange={handleChange}
             focus
           />
@@ -98,10 +96,14 @@ export function UpdateTodo({ _id, handleClose, handleUpdate }) {
             onClick={handleChecked}
             checked={checked}
           />
+          </Form.Field>
+          <Form.Field>
           <Button type="submit" className="button" primary>
             Submit
           </Button>
-        </Form.Field>
+          </Form.Field>
+          
+
       </Form>
     </Card>
   );

@@ -1,22 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Button } from "semantic-ui-react";
+import { Button} from "semantic-ui-react";
 
-const CreateBtn = () => {
+const TodoHomeButtons = () => {
   return (
-    <>
-      <Button>
+    <div>
+      <Button className="todoHomeButtons">
         <NavLink className="p-2" to="/createTodo" exact>
           New Task
         </NavLink>
       </Button>
-      <Button>
+      <Button className="todoHomeButtons">
         <NavLink className="p-2" to="/showTodoList" exact>
           View Todos
         </NavLink>
       </Button>
-    </>
+    </div>
   );
 };
 
-export default CreateBtn;
+export default TodoHomeButtons;

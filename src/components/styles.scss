@@ -1,20 +1,109 @@
-.not-visible{
-    visibility: hidden;
-    // display: none;
+/*
+    HOME PAGE
+*/
+.home{
+    background-color: blueviolet;
+    height: 100vh;
+    color: white;
+    .options-container{
+        margin-top: 10%;
+    }
+    .home-container{
+        margin-top: 7rem;
+    }
+    .current-date{
+    }
 }
+.options-container{
+    // margin-top: 10em;
 
+    .options-button{
+        margin: 0 0.5rem !important;
+    }
+}
+/*
+    CREATE TO DO CONTAINER
+*/
 .todo-home{
     background-color: blueviolet;
-    height: 100%;
+    height: 100vh;
+    color: white;
+.todo-home-welcome-message{
+    padding-top: 5rem;
 }
-.home{
-    background-color: gray;
-    // height: auto;
-}
+    .todo-home-welcome-message-text{
+        font-size: 40px;
+      
+    }
+    .TodoHomeButtons-container{
+      
+    }
 
-.options-container{
-    margin-top: 10em;
+}
+/*
+    CREATE TO DO 
+*/
+.create-todo-container{
+    background-color: blueviolet;
+    // height: 100vh;
+}
+.create-todo-card-container{
+    .create-todo-input{
+        width: 90% !important;
+    }
+}
+.create-todo{
+    // height: 100vh;
+    width: 50% !important;
+    padding-top: 2rem!important;
+    padding-bottom: 1rem !important;
+    .todo-label{
+       
+    }
+
+}
+/*
+    SHOW TO DO PAGE
+*/
+.show-todo-list-contaner{
+    background-color: blueviolet;
+    height: 100vh;
+    color: white;
 }
 .cards{
-    width: 60% !important;
+    width: 50% !important;
+}
+.todo-title{
+    margin-bottom:1rem;
+}
+
+.cards.update-card{
+    .ui.form.form-container{
+        padding-top: 2em;
+    }
+  
+}
+
+
+.button.primary{
+    color: white !important;
+    margin: 0 5% !important;
+}
+
+.update-container{
+    background-color: blueviolet;
+    margin-top: 2rem;
+}
+
+.close{
+    cursor: pointer;
+}
+
+.todo-input{
+    width: 90% !important;
+}
+
+.todoHomeButtons{
+    margin: 0 1rem !important;
+   
 }

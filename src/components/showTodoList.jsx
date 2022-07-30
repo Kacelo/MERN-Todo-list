@@ -2,16 +2,7 @@ import React, { useState, useEffect } from "react";
 
 //axios to make API calls to the backend. :)
 import axios from "axios";
-import {
-  Form,
-  Button,
-  Card,
-  Dropdown,
-  List,
-  Icon,
-  Checkbox,
-} from "semantic-ui-react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Button, Card, List, Icon } from "semantic-ui-react";
 import { UpdateTodo } from "./updateTodo";
 function TodoCard({ data, handleEdit, handleDelete }) {
   // destructuring the data to display individual data types from the API
@@ -30,16 +21,15 @@ function TodoCard({ data, handleEdit, handleDelete }) {
     handleStatus();
 
     return () => {};
-  }, [completed]);
+  }, [status]);
 
   return (
     <div>
       <>
-      
         <List>
           <List.Item key={_id} className={"created-tasks"}>
             <List.Content>
-            <List.Header>{status}</List.Header>
+              <List.Header>{status}</List.Header>
               <List.Header>{title}</List.Header>
               <List.Description>{description}</List.Description>
               <p>{priority}</p>
@@ -87,7 +77,7 @@ export function ShowTodoList(data) {
   useEffect(
     function () {
       axios
-        .get("http://localhost:8000/api/todo")
+        .get("http://localhost:8001/api/todo")
         .then((res) => {
           console.log(res.data[0].title);
           //   storing fetched todos into the todo array
@@ -113,27 +103,13 @@ export function ShowTodoList(data) {
   }
   // delete function handler to delete todo according to its ID
   function handleDelete(e) {
-    axios.delete(`http://localhost:8000/api/todo/${e.target.name}`);
+    axios.delete(`http://localhost:8001/api/todo/${e.target.name}`);
 
     // updating the todo Array to show that item has been deletedp
     setTodo((data) => {
       return data.filter((todo) => todo._id !== e.target.name);
     });
   }
-
-  // function toggleComplete(e) {
-  //   todo.map((todos) => {
-  //     if (todos._id === todos._id) {
-  //       const updatedTodos = [];
-  //     }
-  //   });
-
-  //   axios.put(`http://localhost:8000/api/todo/${e.target.name}`);
-
-  //   try {
-  //     setTodo({ complete: true });
-  //   } catch (error) {}
-  // }
 
   console.log(todo);
 
@@ -143,55 +119,47 @@ export function ShowTodoList(data) {
   }
 
   return (
-    <>
-      {/* <Router>
-          <Link
-            to="/create-todo"
-            activeClassName="selected"
-            className="button-new"
-          >
-          
-          </Link>
-        </Router> */}
-      <Card centered className="cards">
-        <section className="container">
-          <section className="contents">
-            <div className="title">
-              <h1>TODO LIST</h1>
-            </div>
-
-            <List className="list-container">
-              {todo.map((data) => (
-                <>
-                  <TodoCard
-                    data={data}
-                    handleEdit={handleEdit}
-                    handleDelete={handleDelete}
-                  />
-                </>
-              ))}
-            </List>
-          </section>
-
-          {open ? (
-            <section className="update-container">
-              <div className="update-contents">
-                <p onClick={handleClose} className="close">
-                  <Icon name="chevron down">&times;</Icon>
-                </p>
-
-                <UpdateTodo
-                  _id={id}
-                  handleClose={handleClose}
-                  handleUpdate={handleUpdate}
+    <div className="show-todo-list-contaner">
+      <div className="todo-title">
+        <h1>TODO LIST</h1>
+      </div>
+      <Card centered className="cards show-todo-list">
+        <div className="contents">
+          <List className="list-container">
+            {todo.map((data) => (
+              <List.Item>
+                <TodoCard
+                  data={data}
+                  handleEdit={handleEdit}
+                  handleDelete={handleDelete}
                 />
-              </div>
-            </section>
-          ) : (
-            ""
-          )}
-        </section>
+              </List.Item>
+            ))}
+          </List>
+        </div>
       </Card>
-    </>
+      <br></br>
+      {open && (
+        <section className="update-container">
+          <div className="update-contents">
+            <p onClick={handleClose} className="close">
+              <Icon name="chevron down"></Icon>
+            </p>
+
+            <div className="todo-title">
+              <h2>Update Todo</h2>
+            </div>
+            <UpdateTodo
+              _id={id}
+              handleClose={handleClose}
+              handleUpdate={handleUpdate}
+            />
+             <br></br>
+             <br></br>
+          </div>
+        </section>
+      )}
+     
+    </div>
   );
 }

@@ -1,14 +1,18 @@
 import React from "react";
-import CreateBtn from "./navigation/create_new_btn";
-const TodoHome = () =>{
-    return(
-        <div className="todo-home">
-            <h2>
-                Add or View your todo list
-            </h2>
-            <CreateBtn/>
-        </div>
-    )
-}
+import { CreateTodo } from "./createTodo";
+const TodoHome = () => {
+  return (
+    <div className="todo-home">
+      <div className="todo-home-welcome-message">
+        <h1 className="todo-home-welcome-message-text">
+          keep track of your daily tasks
+        </h1>
+      </div>
+      <div className="TodoHomeButtons-container">
+        <CreateTodo/>
+      </div>
+    </div>
+  );
+};
 
 export default TodoHome;
