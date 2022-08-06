@@ -82,12 +82,12 @@ export function CreateTodo() {
               />
             </Form.Field>
             <Button type="submit" className="button primary">
-              Add New
+              Save
             </Button>
 
             <Button className="button">
               <NavLink className="p-2" to="/showTodoList" exact>
-                View Todos
+                View
               </NavLink>
             </Button>
           </Form>
