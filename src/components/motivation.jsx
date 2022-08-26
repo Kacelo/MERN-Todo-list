@@ -16,7 +16,7 @@ export default function Motivation (){
     let time;
      setTimeout(()=>{
         fetchMessage()
-    },30000)
+    },60000)
       return () => {
         
       }
