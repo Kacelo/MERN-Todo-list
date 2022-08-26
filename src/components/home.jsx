@@ -1,10 +1,11 @@
 import React from "react";
-import { Button, Grid } from "semantic-ui-react";
+import { Button, Grid, Icon } from "semantic-ui-react";
 import { getCurrentdate } from "../helpers/current-day";
 import { greetUser } from "../helpers/greeting";
 import { NavLink } from "react-router-dom";
 import Pomo from "./pomo-doro/pomo-doro";
 import Weather from "./weather-component/weather-component";
+import Motivation from "./motivation";
 const Home = () => {
   return (
     <Grid className="home">
@@ -31,10 +32,10 @@ const Home = () => {
             </NavLink>
           </Button>
           <Button className="options-button">Note</Button>
-          <Button className="options-button">Timer</Button>
+          <Button  color='teal' className="options-button"><Icon name="heartbeat" />Track health</Button>
         </div>
         <div className="motivate">motivational message</div>
-        
+        <Motivation/>
       </Grid.Column>
       
     </Grid>

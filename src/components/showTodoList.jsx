@@ -39,7 +39,7 @@ function TodoCard({ data, handleEdit, handleDelete }) {
             <List.Content className="button-container">
               <Button
                 color="green"
-                className="button"
+                className="button show-todo-button"
                 name={_id}
                 onClick={handleEdit}
               >
@@ -47,7 +47,7 @@ function TodoCard({ data, handleEdit, handleDelete }) {
               </Button>
               <Button
                 color="red"
-                className="button"
+                className="button show-todo-button"
                 name={_id}
                 onClick={handleDelete}
               >
